@@ -39,7 +39,9 @@ export default class PageSlider extends Component {
         let curOffset = this.preOffset + gestureState.dx;
                 console.log('release',curOffset)
         let tv = curOffset > -0.5*width ? 0 : curOffset < -1*width * this.itemList.length +width ? -this.itemList.length * width + width : this.getresOffset(curOffset);
-        Animated.spring(this.state.offset, { toValue: tv }).start(()=>this.preOffset=tv);
+      this.preOffset=tv;this.setState({})
+        Animated.spring(this.state.offset, { toValue: tv }).start();
+        
       },
     });
   }
@@ -51,14 +53,21 @@ export default class PageSlider extends Component {
       }
     }
   }
+ 
   render() {
+    let cIndex=1-this.preOffset/this.props.style.width
     return (
       <View style={[{ height: 200, width: 200, backgroundColor: 'white', flexDirection: 'row' },this.props.style,{flexDirection:'row'}]}>
         {
           this.itemList.map((data, index) => this.renderItems(data, index))
           }
+          <View style={{position:'absolute',top:this.props.style.height-40,height:30,width:50,left:this.props.style.width*0.5-25,justifyContent:'center',
+          alignItems:'center'
+          }}>
+          <Text style={{fontSize:16}}>{cIndex+'/'+this.itemList.length}</Text></View>
       </View>)
   }
+
   renderItems(data, index) {
     let style=this.props.style
     return(
