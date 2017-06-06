@@ -1,0 +1,3 @@
+rootProject.name = 'PageSliderTest'
+
+include ':app'
