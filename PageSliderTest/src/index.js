@@ -23,7 +23,7 @@ export default class PageSlider extends Component {
       onStartShouldSetPanResponder: (evt, gestureState) => true,
       onStartShouldSetPanResponderCapture: (evt, gestureState) => false,
       onMoveShouldSetPanResponder: (evt, gestureState) => false,
-      onMoveShouldSetPanResponderCapture: (evt, gestureState) => false,
+      onMoveShouldSetPanResponderCapture: (evt, gestureState) => { return Math.abs(gestureState.dx)>Math.abs(gestureState.dy)},
 
       onPanResponderGrant: (evt, gestureState) => {
         this.preOffset = this.state.offset._value;

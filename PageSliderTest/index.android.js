@@ -30,7 +30,7 @@ export default class PageSliderTest extends Component {
          </PageSliderItem>
          <PageSliderItem index={2}>
            <View style={{height:200,width:200,backgroundColor:'yellow'}}/>
-           <TouchableOpacity style={{width:50,height:50,backgroundColor:'#412530'}} onPress={()=>{console.log('click')}}/>
+           <TouchableOpacity style={{width:200,height:50,backgroundColor:'#412530'}} onPress={()=>{console.log('click')}}/>
          </PageSliderItem>
          </PageSlider>
       </View>
